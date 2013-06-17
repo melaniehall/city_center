@@ -28,3 +28,5 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'cucumber-rails'
 end
+
+gem "bootstrap-sass", ">= 2.1.1.0"
