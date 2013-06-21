@@ -1,12 +1,12 @@
 <header class="hero-unit">
-  <h1> Welcome to City Center</h2>
+  <h1> Intro to Calendar</h2>
     <button> <%= link_to('Sign In', new_user_session_path)%></button>
     <button><%= link_to('Sign Up', new_user_registration_path)%></button>
 </header>
 
 <div class="row-fluid">
   <div class="span12">
-    <% @events_by_date[@date].each do |event| %>
+    <% @events[0..10].each do |event| %>
       <li><%= link_to event.name, event %></li>
     <% end %>
   </div>

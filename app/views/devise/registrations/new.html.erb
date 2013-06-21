@@ -1,6 +1,6 @@
 <%= link_to "Back", :back %>
 <h2>Sign up</h2>
-
+<p>Are you an organization? Sign up <%= link_to("here", new_organization_registration_path)%> </p>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 

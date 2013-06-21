@@ -7,6 +7,8 @@ CityCenter::Application.routes.draw do
 
   resources :events
 
+  resources :attendees
+
   resources :organizations do
     member do
       get :edit_profile

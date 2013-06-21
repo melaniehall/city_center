@@ -19,6 +19,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @user = current_user if current_user
+
     @organizations = Organization.where(id: @event.organization_id)
     @organization = @organizations.each do |org|
       org
