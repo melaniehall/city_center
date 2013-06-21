@@ -1,7 +1,6 @@
 class Event < ActiveRecord::Base
-  belongs_to :user
+  has_many :users, :through => :attendees
 
-  attr_accessible :name, :description, :date, :start_time, :end_time
-
-  validates :name, :description, :date, :state_time, :end_time, :presence => true
+  attr_accessible :name, :description, :scheduled_on, :starts_at, :ends_at, :organization_id
+  # validates :name, :description, :scheduled_on, :starts_at, :ends_at, :presence => true
 end

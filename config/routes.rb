@@ -1,9 +1,18 @@
 CityCenter::Application.routes.draw do
-  devise_for :organizations
 
+  devise_for :organizations
   devise_for :users
 
   root :to => "home#index"
+
+  resources :events
+
+  resources :organizations do
+    member do
+      get :edit_profile
+      put :edit_profile
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

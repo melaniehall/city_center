@@ -11,17 +11,46 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130618144732) do
+ActiveRecord::Schema.define(:version => 20130620164300) do
 
   create_table "events", :force => true do |t|
-    t.string   "name"
+    t.text     "name"
     t.text     "description"
-    t.date     "date"
-    t.time     "start_time"
-    t.time     "end_time"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.date     "scheduled_on"
+    t.time     "starts_at"
+    t.time     "ends_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "organization_id"
   end
+
+  create_table "organizations", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.text     "name"
+    t.text     "bio"
+    t.text     "mission"
+    t.text     "city"
+    t.text     "state"
+    t.integer  "zip"
+    t.string   "contact_email"
+    t.string   "website"
+    t.string   "twitter_handle"
+    t.string   "facebook"
+    t.string   "youtube"
+    t.string   "logo"
+  end
+
+  add_index "organizations", ["email"], :name => "index_organizations_on_email", :unique => true
+  add_index "organizations", ["reset_password_token"], :name => "index_organizations_on_reset_password_token", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -36,6 +65,13 @@ ActiveRecord::Schema.define(:version => 20130618144732) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.text     "name"
+    t.text     "bio"
+    t.text     "city"
+    t.text     "state"
+    t.string   "website"
+    t.string   "twitter_handle"
+    t.string   "facebook"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
