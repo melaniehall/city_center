@@ -7,26 +7,31 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p class="notice"><%= notice %></p>
-<!-- <p class="alert"><%= alert %></p> -->
+<% if notice %>
+  <p class="notice"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert"><%= alert %></p>
+<% end %>
 <nav>
-  <% if user_signed_in? %>
+  <a href="/"><img src="assets_"></a>
+  <ul>
+  <% if user_signed_in? || organization_signed_in? %>
     <li>
       <%= link_to('Sign Out', destroy_user_session_path, :method => :delete) %>
     </li>
+    <li>
+      <%= link_to('Calendar', events_path)  %>
+    </li>
+    <li>
+      <%= link_to('Community', organizations_path)  %>
+    </li>
+    <% if organization_signed_in? %>
+      <li> <%= link_to('Profile', organization_path(current_organization)) %> </li>
+    <% end %>
   <% else %>
-    <li>
-      <a href="calendar.html.erb">Calendar</a>
-    </li>
-    <li>
-      <%= link_to('Community', new_user_registration_path)  %>
-    </li>
-      <%= link_to('Sign In', new_user_session_path)  %>
-    </li>
-    <li>
-      <%= link_to('Sign Up', new_user_registration_path)  %>
-    </li>
   <% end %>
+</ul>
 </nav>
 <div id="wrapper">
   <%= yield %>
