@@ -1,0 +1,14 @@
+<h1>New Event</h1>
+<%= form_for [@event] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <%= f.label :scheduled_on %>
+  <%= f.text_area :scheduled_on %>
+  <%= f.label :starts_at %>
+  <%= f.text_area :starts_at %>
+  <%= f.label :ends_at %>
+  <%= f.text_area :ends_at %>
+  <%= f.submit "Create Event", url: events_path, :method => :create %>
+<% end %>

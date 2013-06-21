@@ -1,0 +1,12 @@
+<%= link_to "Back", :back %>
+<h2><%= @event.name %></h2>
+<p>Hosted by: <%= link_to "#{@organization.first.email}", organization_path(@organization) %> </p>
+<p><%= @event.description %></p>
+
+<% if current_organization %>
+  <% if current_organization.id == @event.organization_id %>
+    <%= link_to("Delete Event", event_path(@event), :method => :delete) %>
+  <% end %>
+<% end %>
+
+<%= link to("Attend Event",
