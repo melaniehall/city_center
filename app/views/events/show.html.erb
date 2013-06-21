@@ -13,10 +13,3 @@
   <%= link_to("Attend Event", new_attendee_path(@event))%>
 <% end %>
 
-<% if @attendees %>
-  <% @attendees.each do |attendee| %>
-    <ul>
-      <li> <%= attendee.email %> </li>
-    </ul>
-  <% end %>
-<% end %>
