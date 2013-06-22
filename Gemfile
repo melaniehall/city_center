@@ -23,12 +23,12 @@ end
 gem 'jquery-rails'
 
 group :development, :test do
-  gem 'fabrication'
+  gem 'factory_girl_rails'
   gem 'launchy'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'cucumber-rails'
+  gem 'selenium-webdriver'
 end
 
 gem "bootstrap-sass", ">= 2.1.1.0"

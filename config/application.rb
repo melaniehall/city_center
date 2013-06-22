@@ -68,6 +68,9 @@ module CityCenter
 
     config.generators do |g|
       g.test_framework :rspec
+      g.factory_girl false
+      g.factory_girl dir: 'spec/factories'
     end
+
   end
 end

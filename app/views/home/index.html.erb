@@ -1,13 +1,13 @@
 <header class="hero-unit">
-  <h1> Intro to Calendar</h2>
-    <button> <%= link_to('Sign In', new_user_session_path)%></button>
-    <button><%= link_to('Sign Up', new_user_registration_path)%></button>
+  <h1> Intro to Calendar</h1>
+  <button>
+    <%= link_to('Sign In', new_user_session_path, :id => "sign_in_link")%>
+  </button>
+  <button>
+    <%= link_to('Sign Up', new_user_registration_path, :id => "sign_up_link")%>
+  </button>
 </header>
 
-<div class="row-fluid">
-  <div class="span12">
-    <% @events[0..10].each do |event| %>
-      <li><%= link_to event.name, event %></li>
-    <% end %>
-  </div>
-</div>
+<% if current_user %>
+  <%= link_to "Add Organization", new_organization_path %>
+<% end %>

@@ -7,32 +7,30 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
 <% if notice %>
   <p class="notice"><%= notice %></p>
 <% end %>
 <% if alert %>
   <p class="alert"><%= alert %></p>
 <% end %>
+
 <nav>
-  <a href="/"><img src="assets_"></a>
   <ul>
-  <% if user_signed_in? || organization_signed_in? %>
+  <% if user_signed_in?%>
     <li>
       <%= link_to('Sign Out', destroy_user_session_path, :method => :delete) %>
     </li>
     <li>
-      <%= link_to('Calendar', events_path)  %>
+      <%= link_to('Calendar', root_path)  %>
     </li>
     <li>
       <%= link_to('Community', organizations_path)  %>
     </li>
-    <% if organization_signed_in? %>
-      <li> <%= link_to('Profile', organization_path(current_organization)) %> </li>
-    <% end %>
-  <% else %>
   <% end %>
 </ul>
 </nav>
+
 <div id="wrapper">
   <%= yield %>
 </div>

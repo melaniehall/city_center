@@ -1,4 +1,4 @@
-<%= form_for(:organization,:url => organization_path(@organization), :html => { :method => :put }) do |f| %>
+<%= form_for(@organization) do |f| %>
 
   <div><%= f.label :name %><br />
   <%= f.text_field :name, :autofocus => true %></div>
