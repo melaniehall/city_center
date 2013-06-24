@@ -21,6 +21,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'dynamic_form'
 
 group :development, :test do
   gem 'factory_girl_rails'
@@ -32,3 +33,4 @@ group :development, :test do
 end
 
 gem "bootstrap-sass", ">= 2.1.1.0"
+
