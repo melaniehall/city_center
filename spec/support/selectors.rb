@@ -8,12 +8,16 @@ def idsf(descriptor_text)
   end
 end
 
-def sf(descriptor_text)
+def sf(descriptor_text)#selector for
   case descriptor_text
   when /the sign in button/
     '#sign_in_link'
   when /the sign up button/
     '#sign_up_link'
+  when /the sign out button/
+    '#sign_out_link'
+  when /add event/
+    '#add_event_to_organization1'
   end
 end
 

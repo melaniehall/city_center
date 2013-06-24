@@ -1,13 +1,25 @@
-<header class="hero-unit">
-  <h1> Intro to Calendar</h1>
-  <button>
-    <%= link_to('Sign In', new_user_session_path, :id => "sign_in_link")%>
-  </button>
-  <button>
-    <%= link_to('Sign Up', new_user_registration_path, :id => "sign_up_link")%>
-  </button>
-</header>
+<% unless current_user %>
+  <header class="hero-unit">
+    <h1> Intro to Calendar</h1>
+    <button>
+      <%= link_to('Sign In', new_user_session_path, :id => "sign_in_link")%>
+    </button>
+    <button>
+      <%= link_to('Sign Up', new_user_registration_path, :id => "sign_up_link")%>
+    </button>
+  </header>
+<% end %>
 
 <% if current_user %>
   <%= link_to "Add Organization", new_organization_path %>
+  <h3>My Organizations:</h3>
+  <% current_user.organizations.each do |organization| %>
+    <div><%= link_to organization.name, organization %></div>
+      <ul>
+      <% organization.events.each do |event| %>
+          <li><%= link_to event.name, organization_event_path(organization, event) %></li>
+      <% end %>
+      </ul>
+      <%= link_to "Add Event", new_organization_event_path(organization) %>
+  <% end %>
 <% end %>

@@ -1,8 +1,9 @@
 require 'spec_helper'
 
-pending "User can logout", :js => true do
+feature "User can logout", :js => true do
   let!(:user) { FactoryGirl.create(:user) }
   background do
+    login_user(user)
     visit root_path
   end
 
