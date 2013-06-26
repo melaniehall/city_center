@@ -2,9 +2,15 @@
 <% @organization.errors.full_messages.each do |msg| %>
   <p><%= msg %></p>
 <% end %>
-<%= form_for @organization do |f| %>
+<%= form_for @organization, :html => {:multipart => true} do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
+  <p>
+    <%= image_tag @organization.avatar_url(:thumb) if @organization.avatar? %>
+    <label>My Avatar</label>
+    <%= f.file_field :avatar %>
+    <%= f.hidden_field :avatar_cache %>
+  </p>
   <%= f.label :bio %>
   <%= f.text_area :bio %>
 

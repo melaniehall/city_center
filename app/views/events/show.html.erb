@@ -12,7 +12,7 @@
 <h4>Attendees</h4>
   <ul>
     <% @attendees.each do |attendee| %>
-      <li><%= attendee.user.name %></li>
+      <li><%= image_tag attendee.user.avatar_url(:thumb) %></li>
     <% end %>
   </ul>
 
@@ -26,5 +26,3 @@
 <% else %>
   <%= link_to("Attend Event", attendees_path(@event), :method => :create)%>
 <% end %>
-
-<%= link_to("Add to Google Calendar", @event.google_calendar_url,  :target => "_blank" ) %>

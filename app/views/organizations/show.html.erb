@@ -1,7 +1,7 @@
 <%= link_to "Back", :back %>
 
 <%= @organization.name %>
-
+<%= image_tag @organization.avatar_url(:event) if @organization.avatar? %>
 <div class="events">
   <h3> Upcoming Events </h3>
   <ul>

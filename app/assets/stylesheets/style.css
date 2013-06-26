@@ -1,0 +1,66 @@
+
+html, body{
+  background-color: #424950;
+  color: white;
+  font-family: 'PT Sans', sans-serif;
+  font-weight: 100;
+  margin: 0px;
+  padding: 0px;
+}
+
+.intro{
+  text-align: center;
+  max-width: 900px;
+  margin: 30px auto 60px;
+  padding: 60px;
+}
+
+.intro h1{
+  font-size: 4em;
+}
+
+.intro button {
+  background-color: #4cd0d0;
+  width: 100px;
+  border: none;
+  font-size: 1.2em;
+  border-radius: 4px 4px 4px 4px;
+  padding: 10px 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.intro button a{
+  color: #FFF;
+  text-transform: uppercase;
+}
+
+.community-intro{
+  background-color: #ffe14f;
+  padding: 40px;
+  text-align: center;
+}
+
+.organizations-intro{
+  max-width: 900px;
+  margin: 0px auto;
+}
+
+.organization-intro img{
+  width: 100%;
+}
+
+.organization-intro{
+  border: solid 1px white;
+  display: inline-block;
+  text-align: center;
+}
+
+h1, h2{
+  font-weight: 100;
+  text-align: center;
+}
+
+h1{
+  font-size: 3em;
+}

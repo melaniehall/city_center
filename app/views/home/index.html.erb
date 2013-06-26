@@ -1,6 +1,6 @@
 <% unless current_user %>
-  <header class="hero-unit">
-    <h1> Intro to Calendar</h1>
+  <header class="intro">
+    <h1> We're better together.</h1>
     <button>
       <%= link_to('Sign In', new_user_session_path, :id => "sign_in_link")%>
     </button>
@@ -11,6 +11,8 @@
 <% end %>
 
 <% if current_user %>
+  <%= image_tag current_user.avatar_url(:event) if current_user.avatar? %>
+  <%= link_to "Edit User Info", edit_user_registration_path %>
   <%= link_to "Add Organization", new_organization_path %>
   <h3>My Organizations:</h3>
   <% current_user.organizations.each do |organization| %>
@@ -22,4 +24,18 @@
       </ul>
       <%= link_to "Add Event", new_organization_event_path(organization) %>
   <% end %>
+
+
+<% else %>
+  <div class="community-intro">
+    <h2>Our Community</h2>
+    <p> We have the most creative, most innovative nonprofits and social entreprenuers. Here's a glimpse: </p>
+    <div class="organizations-intro row-fluid">
+      <% Organization.all.each do | org | %>
+        <div class="organization-intro span3"> <%= image_tag org.avatar_url(:event) %> </div>
+      <% end %>
+    </div>
+  </div>
 <% end %>
+
+

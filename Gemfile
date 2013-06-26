@@ -24,6 +24,7 @@ gem 'jquery-rails'
 gem 'dynamic_form'
 
 gem 'carrierwave'
+gem "rmagick", "~> 2.13.2"
 
 gem 'google-api-client', :require => 'google/api_client'
 gem 'omniauth', '1.1.0'
