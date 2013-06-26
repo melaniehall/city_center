@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130622021355) do
+ActiveRecord::Schema.define(:version => 20130626012815) do
 
   create_table "attendees", :force => true do |t|
-    t.integer  "event_id"
     t.integer  "user_id"
+    t.integer  "event_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -29,22 +29,25 @@ ActiveRecord::Schema.define(:version => 20130622021355) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "organization_id"
+    t.text     "venue"
   end
 
   create_table "organizations", :force => true do |t|
-    t.text    "name"
-    t.text    "bio"
-    t.text    "mission"
-    t.text    "city"
-    t.text    "state"
-    t.integer "zip"
-    t.string  "contact_email"
-    t.string  "website"
-    t.string  "twitter_handle"
-    t.string  "facebook"
-    t.string  "youtube"
-    t.string  "logo"
-    t.integer "user_id"
+    t.text     "name"
+    t.text     "bio"
+    t.text     "mission"
+    t.text     "city"
+    t.text     "state"
+    t.integer  "zip"
+    t.string   "contact_email"
+    t.string   "website"
+    t.string   "twitter_handle"
+    t.string   "facebook"
+    t.string   "youtube"
+    t.string   "logo"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|
@@ -67,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20130622021355) do
     t.string   "website"
     t.string   "twitter_handle"
     t.string   "facebook"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

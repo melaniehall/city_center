@@ -29,3 +29,7 @@ end
 def logout_user
   click_link_or_button idsf('the sign out button')
 end
+
+def user_attends_event(user, event)
+  FactoryGirl.create(:attendee, :user_id => user.id, :event_id => event.id)
+end

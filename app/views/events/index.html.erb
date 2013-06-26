@@ -1,0 +1,26 @@
+<div class="row-fluid">
+
+  <div class="span12">
+    <h1 class="span3">Upcoming Events</h1>
+<!--     <%#= link_to('Add Event', new_organization_event_path(current_user.organization.first))%> -->
+
+  <div class="span9">
+    <div id="events">
+      <h2 id="month">
+        <%= link_to "<", date: @date.prev_month %>
+        <%= @date.strftime("%B %Y") %>
+        <%= link_to ">", date: @date.next_month %>
+      </h2>
+      <%= calendar @date do |date| %>
+        <%= date.day %>
+        <% if @events_by_date[date] %>
+          <ul>
+            <% @events_by_date[date].each do |event| %>
+              <li><%= link_to event.name, organization_event_path(@organization.find(:id => event.organization_id).first, event) %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

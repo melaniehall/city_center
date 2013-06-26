@@ -11,7 +11,7 @@ feature "User can login", :js => true do
     fill_in 'Email', with: 'bob@example.com'
     fill_in 'Password', with: 'password'
     click_link_or_button idsf('the sign in button')
-    page.should have_content "Intro"
+    page.should have_content "Signed in successfully"
     page.should have_selector(:link_or_button, idsf('the sign out button'))
   end
 

@@ -1,0 +1,21 @@
+<h1>New Event</h1>
+
+<% @event.errors.full_messages.each do |msg| %>
+  <p><%= msg %></p>
+<% end %>
+
+<%= form_for [@organization, @event] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <%= f.label :venue %>
+  <%= f.text_area :venue %>
+  <%= f.label :scheduled_on %>
+  <%= f.text_area :scheduled_on %>
+  <%= f.label :starts_at %>
+  <%= f.text_area :starts_at, :placeholder => "6:00PM"%>
+  <%= f.label :ends_at %>
+  <%= f.text_area :ends_at, :placeholder => "7:00PM" %>
+  <%= f.submit "Create Event" %>
+<% end %>

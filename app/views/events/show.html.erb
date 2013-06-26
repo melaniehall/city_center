@@ -1,0 +1,30 @@
+<h4><%= @event.name %></h4>
+<p> Host: <%= link_to @organization.name, organization_path(@organization)%></p>
+<p><%= @event.venue %></p>
+<p><%= @event.description %></p>
+<p><%= @event.scheduled_on.strftime("%m-%d-%Y") %></p>
+<p><%= @event.starts_at.strftime("%I:%M%p") %>
+  <% if @event.ends_at %>
+    <%= @event.ends_at.strftime("to %I:%M%p") %>
+  <% end %>
+ </p>
+
+<h4>Attendees</h4>
+  <ul>
+    <% @attendees.each do |attendee| %>
+      <li><%= attendee.user.name %></li>
+    <% end %>
+  </ul>
+
+<%  if current_user.id == @organization.user_id %>
+  <%= link_to("Edit Event Details", edit_organization_event_path(@organization, @event)) %>
+  <%= link_to("Delete Event", organization_event_path(@organization, @event), :method => :delete, :confirm => "Are you sure you want to delete #{@event.name}?")%>
+<% end %>
+
+<% if current_user.is_attending?(@event) %>
+  <%= link_to("Leave Event", attendee_path(@event), :method => :delete)%>
+<% else %>
+  <%= link_to("Attend Event", attendees_path(@event), :method => :create)%>
+<% end %>
+
+<%= link_to("Add to Google Calendar", @event.google_calendar_url,  :target => "_blank" ) %>

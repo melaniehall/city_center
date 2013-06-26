@@ -1,4 +1,7 @@
 <h1>New Organization</h1>
+<% @organization.errors.full_messages.each do |msg| %>
+  <p><%= msg %></p>
+<% end %>
 <%= form_for @organization do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>

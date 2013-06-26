@@ -11,14 +11,14 @@ class OrganizationsController < ApplicationController
   end
 
   def create
-    organization = current_user.organizations.create(params[:organization])
+    @organization = current_user.organizations.create(params[:organization])
 
-    if organization.persisted?
+    if @organization.persisted?
       flash.notice = "Your organization has been created"
-      redirect_to organization_path(organization)
+      redirect_to organization_path(@organization)
     else
       flash.notice = "Your organization could not be created"
-      redirect_to new_organization_path
+      render :new
     end
   end
 
