@@ -72,7 +72,12 @@
       </div>
        <% end %>
     <% else %>
-      <p> You currently have no upcoming events, please create one <%= link_to " here.", new_organization_event_path(@organization), :class => "current-user" %><p>
+
+      <% if current_user.id == @organization.user_id %>
+        <p> You currently have no upcoming events, please create one <%= link_to " here.", new_organization_event_path(@organization), :class => "current-user" %><p>
+      <% else %>
+        <p> This organization currently has no upcoming events. Please check back soon. </p>
+      <% end %>
     <% end %>
   </ul>
 </div>
