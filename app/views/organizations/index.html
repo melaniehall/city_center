@@ -1,4 +1,46 @@
-<% @organizations.each do |organization| %>
-  <div><%= link_to organization.name, organization %></div>
-<% end %>
+<div class="row-fluid community-introduction">
+  <h2>Our Community</h2>
+  <p class="align-center">“Equality comes in realizing that we are all doing different jobs for a common purpose. That is the aim behind any community. The very name <br/> community means let’s come together to recognize the unity. Come ... unity.”
+—Swami Satchidananda</p>
+  <br/>
+</div>
 
+<div class="row-fluid">
+  <div id="community-carousel" class="carousel slide">
+    <!-- Carousel items -->
+    <div class="carousel-inner align-center">
+      <div class="active item">
+        <% @organizations[0..3].each do |organization| %>
+          <div class="span3 community-panel">
+            <%= link_to organization do %>
+              <%= image_tag organization.avatar_url(:event), :class => "community-image" %>
+            <% end %>
+
+              <h3><%= link_to organization.name, organization %></h3>
+              <p><%= organization.bio %></p>
+              <p><%= mail_to organization.contact_email %></p>
+          </div>
+
+        <% end %>
+      </div>
+
+      <div class="item">
+        <% @organizations[2..4].each do |organization| %>
+          <div class="span3 community-panel">
+            <%= link_to organization do %>
+              <%= image_tag organization.avatar_url(:event), :class => "community-image" %>
+            <% end %>
+
+              <h3><%= link_to organization.name, organization %></h3>
+              <p><%= organization.bio %></p>
+              <p><%= mail_to organization.contact_email %></p>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#community-carousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#community-carousel" data-slide="next">&rsaquo;</a>
+  </div>
+</div>

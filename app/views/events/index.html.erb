@@ -1,16 +1,22 @@
-<div class="row-fluid">
+<div class="full_calendar row-fluid">
+
 
   <div class="span12">
-    <h1 class="span3">Upcoming Events</h1>
-<!--     <%#= link_to('Add Event', new_organization_event_path(current_user.organization.first))%> -->
-
-  <div class="span9">
     <div id="events">
       <h2 id="month">
         <%= link_to "<", date: @date.prev_month %>
         <%= @date.strftime("%B %Y") %>
         <%= link_to ">", date: @date.next_month %>
       </h2>
+       <p class="add-event-link"> <% if current_user.organizations.count > 1 %>
+        <!-- Button to trigger modal -->
+          <a href="#eventModal" class="capitalized" role="button" data-toggle="modal">Add Event</a>
+
+        <% elsif current_user.organizations.count == 1  %>
+          <%= link_to "Add Event", new_organization_event_path(current_user.organizations.first), :class => "capitalized" %>
+        <% else %>
+        </p>
+        <% end %>
       <%= calendar @date do |date| %>
         <%= date.day %>
         <% if @events_by_date[date] %>
@@ -22,5 +28,27 @@
         <% end %>
       <% end %>
     </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div id="eventModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="eventModallLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3>Select the organization you'd like to <br/>create an event for.</h3>
+  </div>
+  <div class="modal-body">
+    <% current_user.organizations.each do |organization| %></p>
+          <div class="span2">
+            <%= link_to new_organization_event_path(organization) do %>
+                <%= image_tag organization.avatar_url(:event), :class => "organization-image" %>
+            <% end %>
+            <h4 class="title">
+              <%= organization.name %>
+            </h4>
+          </div>
+
+        <% end %>
   </div>
 </div>

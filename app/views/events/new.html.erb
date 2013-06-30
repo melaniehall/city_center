@@ -1,21 +1,44 @@
-<h1>New Event</h1>
+<div class="event-form row-fluid">
 
-<% @event.errors.full_messages.each do |msg| %>
-  <p><%= msg %></p>
+<div class="span3">
+<h2>New Event</h2>
+<p class="capitalized align-center">for <%= @organization.name %></p>
+</div>
+
+<div class="span4">
+  <% @event.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <% end %>
+
+  <%= form_for [@organization, @event] do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description, :cols => 10, :rows => 10 %>
+</div>
+
+<div class="span5 event-form2">
+    <%= f.label :venue %>
+    <%= f.text_field :venue %>
+
+    <%= f.label :scheduled_on %>
+    <%= f.text_field :scheduled_on, :placeholder => "YYYY-MM-DD" %>
+
+    <%= f.label :starts_at %>
+    <%= f.text_field :starts_at, :placeholder => "6:00PM"%>
+
+    <%= f.label :ends_at %>
+    <%= f.text_field :ends_at, :placeholder => "7:00PM" %>
+
+    <%= f.label :organizer %>
+    <%= f.text_field :organizer %>
+
+    <%= f.label :contact_email %>
+    <%= f.text_field :contact_email %>
+
+    <%= f.submit "Create Event", :class => "form-submit-btn" %>
 <% end %>
 
-<%= form_for [@organization, @event] do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-  <%= f.label :venue %>
-  <%= f.text_area :venue %>
-  <%= f.label :scheduled_on %>
-  <%= f.text_area :scheduled_on %>
-  <%= f.label :starts_at %>
-  <%= f.text_area :starts_at, :placeholder => "6:00PM"%>
-  <%= f.label :ends_at %>
-  <%= f.text_area :ends_at, :placeholder => "7:00PM" %>
-  <%= f.submit "Create Event" %>
-<% end %>
+</div>
+</div>

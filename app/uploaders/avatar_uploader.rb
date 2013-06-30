@@ -35,7 +35,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :event do
-    process :resize_to_fill => [100,100]
+    process :resize_to_fill => [150,150]
+  end
+
+  version :large do
+    process :resize_to_fill => [200,200]
   end
 
   # Process files as they are uploaded:

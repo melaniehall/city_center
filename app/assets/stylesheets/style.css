@@ -1,11 +1,25 @@
 
 html, body{
-  background-color: #424950;
+  background: #424950;
   color: white;
-  font-family: 'PT Sans', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-weight: 100;
   margin: 0px;
-  padding: 0px;
+}
+
+h1, h2, h3, h4{
+ font-family: 'Ubuntu', sans-serif;
+ font-weight: 200;
+ margin-bottom: 0px;
+}
+
+a{
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+a:hover{
+  color: #EEEEEE;
 }
 
 .intro{
@@ -19,7 +33,11 @@ html, body{
   font-size: 4em;
 }
 
-.intro button {
+.intro button,
+input#sign_in_link,
+input#sign_up_link {
+  color: white;
+  text-transform: uppercase;
   background-color: #4cd0d0;
   width: 100px;
   border: none;
@@ -28,6 +46,32 @@ html, body{
   padding: 10px 10px;
   margin-top: 10px;
   margin-right: 10px;
+}
+
+.align-right{
+  text-align: right;
+}
+
+.align-center{
+  text-align: center;
+}
+
+.login{
+  max-width: 500px;
+  margin: 30px auto 0px;
+}
+
+.signup{
+  max-width: 700px;
+  margin: 30px auto 0px;
+}
+
+.signup .new_user{
+  margin-top: 10px;
+}
+
+#user_remember_me{
+  vertical-align: top;
 }
 
 .intro button a{
@@ -63,4 +107,525 @@ h1, h2{
 
 h1{
   font-size: 3em;
+}
+
+.new_user{
+  margin: 0px auto;
+  text-align: left;
+}
+
+.login h2{
+  text-align: left;
+}
+
+.new_user div{
+  margin-bottom: 20px;
+}
+
+.new_user label{
+  font-size: 10px;
+  line-height: 10px;
+  margin-bottom: 0px;
+  display: inline-block;
+  color: #DDD;
+}
+
+.devise_links{
+  text-align: left;
+  margin: 0px auto;
+  padding-top: 30px;
+}
+
+.devise_links a{
+  color: white;
+}
+
+#user_avatar, #organization_avatar{
+  color: white;
+}
+
+nav{
+  height: 50px;
+  margin: 10px auto 10px;
+  max-width: 90%;
+  font-size: .85em;
+}
+
+nav ul{
+  text-align: right;
+}
+
+nav ul li{
+  display: inline-block;
+  padding: 10px;
+}
+
+nav ul li a{
+  color: #FFFFFF;
+}
+
+nav ul li a:hover{
+  color: white;
+  border-bottom: solid 2px #4cd0d0;
+  text-decoration: none;
+}
+
+.dropdown-menu{
+  color: #222222;
+}
+
+.dropdown-menu:hover{
+  color: #222222;
+}
+.dropdown-menu a{
+  color: #222222;
+  border-bottom: solid 1px #EEEEEE;
+  padding: 0px ;
+  text-align: right;
+}
+
+.dropdown-menu a:hover{
+  color: #222222;
+}
+
+.drop-down-toggle:visited{
+  color: white;
+  text-decoration: none;
+}
+
+.drop-down-toggle:focus{
+  color: white;
+  text-decoration: none;
+  outline: #424950;
+}
+.dropdown-menu li{
+  padding: 0px;
+  width: 100%;
+}
+
+.dropdown-menu li a:hover{
+  background-color: #FFF;
+  background-image: none;
+  color: #4cd0d0;
+}
+
+.dropdown-menu a:hover{
+  border-bottom: solid 1px #EEEEEE;
+  background-color: #FFFFFF;
+}
+
+.organization-item{
+  height: 400px;
+}
+
+
+/*User & Organization Profile*/
+
+.current-user{
+  font-weight: 100;
+  color: #AAA;
+  font-style: italic;
+}
+
+.bio{
+  margin-top: 6px;
+  border-top: solid 1px #A3A3A3;
+  border-bottom: solid 1px #A3A3A3;
+  padding: 10px 0px;
+}
+
+.secondary-user-info{
+  font-size: .95em;
+  line-height: 1.5em;
+}
+
+.manage_links{
+  margin-top: 30px;
+}
+
+.event-date-box{
+  padding: 10px 5px;
+  margin-right: 2px;
+  background-color: #6AC393;
+  width: 40px;
+  height: 40px;
+  color: white;
+}
+
+.event-date-box-large{
+  background-color: #6AC393;
+  color: white;
+}
+
+.manage_links a, .manage_event_links a{
+  text-transform: uppercase;
+  font-size:.85em;
+  color: #EEEEEE;
+  padding-right: 2px;
+}
+
+.user-dashboard, .organization-dashboard{
+  max-width: 800px;
+  margin: 0px auto;
+}
+
+h4{
+  font-size: 1em;
+  line-height: 1em;
+}
+
+.user-thumb{
+  vertical-align: top;
+  margin-right: 8px;
+}
+
+.user-panel, .organization-panel{
+  background-color: #28292a;
+  color: #FFF;
+  font-size: .75em;
+  font-weight: 100;
+  padding: 10px;
+  box-shadow: 2px 2px 5px #222;
+  line-height: 1em;
+}
+
+.organization-panel h2{
+  text-align: left;
+  line-height: 1em;
+  padding-bottom: 5px;
+  border-bottom: solid 1px #FFF;
+}
+
+.organization-panel p{
+  text-align: left;
+  line-height: 2em;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px #FFF;
+}
+
+.organization-panel span{
+  line-height: 2em;
+}
+.event{
+  background-color: #FFFFFF;
+  color: #222222;
+  box-shadow: 2px 2px 20px #222;
+  padding-top: 5px;
+  height: 150px;
+  text-align: center;
+  line-height: 1.25em;
+}
+
+.event a{
+  color: #222222;
+}
+
+.info-panel{
+  background-color: #FFFFFF;
+  font-size: .75em;
+  padding: 10px;
+  color: #424950;
+  box-shadow: 2px 2px 20px #222;
+}
+
+.info-panel ul, .info-panel ul li,
+.organization ul, .organization ul li{
+  list-style: none;
+  text-decoration: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.event .capitalized{
+  font-size: .6em;
+  color: #a6a6a6;
+}
+
+.info-panel a{
+  color: #222222;
+}
+
+.attendances ul{
+  margin-top: 20px;
+}
+
+.attendances ul li{
+  margin-bottom: 30px;
+}
+
+.info-panel h3{
+  margin-top: -5px;
+  margin-bottom: -1px;
+  font-size: 1.45em;
+  font-weight: 300;
+  line-height: 1.75em;
+  width: 200px;
+}
+
+.main-user-info{
+  display: inline-block;
+  width: 100px;
+}
+
+#edit-user-info{
+  font-size: .8em;
+  margin-top: 5px;
+  padding: 5px;
+  width: 100%;
+}
+
+.attending-container{
+  margin-top: 60px;
+  background-color: #6AC393;
+  width: 100%;
+}
+
+a.add-event {
+  color: #FFF;
+  text-transform: uppercase;
+  background-color: #4cd0d0;
+  border: none;
+  font-size: 9px;
+  padding: 5px 5px;
+  margin-top: 10px;
+  margin-right: 10px;
+  box-shadow: 1px 1px 5px #E3E3E3;
+}
+
+#events h2#month{
+  margin-bottom: -30px;
+}
+
+.add-event-link{
+  text-align: right;
+  color: white;
+  padding-top: -30px;
+  margin: 0px;
+  padding: 0px 0px 10px;
+}
+
+
+a.add_organization {
+  text-transform: uppercase;
+  font-size: .75em;
+  font-weight: 400;
+  line-height: 1em;
+}
+
+.organization-image:hover{
+  background-color: #6AC393;
+  opacity: .75;
+}
+
+/*Calendar*/
+.full_calendar{
+  max-width: 800px;
+  margin: 0px auto;
+}
+
+.full_calendar a{
+  color: #222;
+}
+
+.add-event-link a{
+  color: white;
+}
+.full_calendar ul li{
+  padding: 0px;
+  margin: 0px;
+}
+
+.full_calendar li{
+  font-size: .8em;
+  line-height: 1.2em;
+}
+
+/*Event Form*/
+.event-form{
+  margin: 0px auto;
+  max-width: 800px;
+}
+
+.event-form2{
+  margin-top: 20px;
+}
+.new_event, .edit_event{
+  margin-top: 20px;
+}
+
+label{
+  font-size: 10px;
+  line-height: 10px;
+  margin-bottom: 5px;
+  color: #DDD;
+}
+
+.edit-user{
+  max-width: 800px;
+  margin: 0px auto;
+}
+
+.form-submit-btn{
+  color: #FFF;
+  text-transform: uppercase;
+  background-color: #4cd0d0;
+  width: 70px;
+  border: none;
+  font-size: 12px;
+  padding: 5px 5px;
+  margin-top: 10px;
+  margin-right: 10px;
+  border-radius: 4px 4px 4px 4px;
+  box-shadow: 1px 0px 2px #E3E3E3;
+}
+
+.hidden{
+  display: none;
+}
+
+.add_event_link{
+  margin-top: 30px;
+}
+
+.cancel{
+  font-size: .75em;
+}
+
+/*Organization Form*/
+.organization-form{
+  margin: 0px auto;
+  max-width: 800px;
+}
+
+.item{
+  margin: 0px auto;
+}
+
+.carousel-inner{
+  margin: 0px auto;
+  max-width: 90%;
+}
+
+.align-center{
+  text-align: center;
+  margin: 0px auto;
+}
+
+.align-right{
+  text-align: right;
+}
+
+.carousel-control{
+  background: none;
+  border: none;
+}
+
+.community-panel{
+  background-color: #FFFFFF;
+  font-size: .75em;
+  padding: 10px;
+  color: #222;
+  box-shadow: 2px 2px 20px #222;
+}
+
+.community-panel h3{
+  font-size: 1.25em;
+}
+.community-panel h3, .community-panel a{
+  color: #222;
+}
+.community-image{
+  width: 100%;
+}
+
+.event-detail{
+  max-width: 500px;
+  margin: 0px auto;
+  text-align: center;
+}
+
+.event-card{
+  background-color: #FFFFFF;
+  font-size: .75em;
+  padding: 10px;
+  color: #222222;
+  box-shadow: 2px 2px 20px #222;
+}
+
+.event-card a{
+  color: #AAAAAA;
+}
+
+.event-attendees ul{
+  list-style: none;
+  margin: 0px;
+}
+
+.event-attendees ul li{
+  display: inline-block;
+  margin: 2.5px;
+}
+
+.capitalized{
+  text-transform: uppercase;
+  font-size: .8em;
+  line-height: 1.25em;
+}
+
+.footer{
+  margin-top: 20px;
+  padding-top: 10px;
+  background-color: #EEE;
+}
+
+.manage-event-links{
+  margin-top: 0px;
+  padding-top: 5px;
+}
+
+#attend_btn{
+  color: #FFF;
+  text-transform: uppercase;
+  background-color: #4cd0d0;
+  border: none;
+  font-size: 9px;
+  padding: 5px 5px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 5px;
+  border-radius: 4px 4px 4px 4px;
+  box-shadow: 1px 1px 5px #E3E3E3;
+}
+
+.event-info{
+  color: #000;
+  font-size: 1.25em;
+  font-weight: 800;
+}
+
+.description{
+  max-width: 80%;
+  margin: 0px auto;
+  font-size: 1.24em;
+  margin-bottom: 20px;
+}
+
+#eventModal h3{
+  color: #222;
+  text-align: center;
+}
+
+.modal-header{
+  background-color: #6AC393;
+  border-radius: 4px 4px;
+}
+
+button.close{
+  margin-top: -50px;
+}
+
+.title{
+  color: #222;
+  text-align: center;
 }

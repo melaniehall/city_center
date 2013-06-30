@@ -6,6 +6,9 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
@@ -16,18 +19,30 @@
   <p class="alert"><%= alert %></p>
 <% end %>
 
-<nav>
-  <div class="logo"> <%= image_tag "logo.png" %> </li>
-  <ul>
+<nav class="row-fluid">
+  <div class="logo span2"> <%= link_to(root_path) do %>
+    <%= image_tag "logo-green.png" %> <% end %> </div>
+  <ul class="span10">
   <% if user_signed_in?%>
-    <li>
-      <%= link_to('Sign Out', destroy_user_session_path, :id => "sign_out_link", :method => :delete ) %>
-    </li>
     <li>
       <%= link_to('Calendar', events_path)  %>
     </li>
     <li>
       <%= link_to('Community', organizations_path)  %>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="drop-down-toggle" data-toggle="dropdown"> Logged in as <span class="current-user"><%= current_user.name %></span> <b class="caret"></b>
+      <ul class="dropdown-menu">
+        <li> <%= link_to('Profile', root_path) %> </li>
+        <% if current_user.organizations.count > 0 %>
+          <% current_user.organizations.each do |organization| %>
+            <li><%= link_to(organization.name, organization_path(organization)) %> </li>
+          <% end %>
+        <% end %>
+        <li><%= link_to('Sign Out', destroy_user_session_path, :id => "sign_out_link", :method => :delete ) %>
+        </li>
+
+      </ul>
     </li>
   <% end %>
 </ul>

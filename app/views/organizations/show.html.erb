@@ -1,19 +1,80 @@
-<%= link_to "Back", :back %>
 
-<%= @organization.name %>
-<%= image_tag @organization.avatar_url(:event) if @organization.avatar? %>
-<div class="events">
-  <h3> Upcoming Events </h3>
+<div class="organization-dashboard row-fluid">
+
+<div class="organization-panel span4">
+  <h2><%= @organization.name %></h2>
+  <% if @organization.bio != "" %>
+    <p><%= @organization.bio %></p>
+  <% end %>
   <ul>
-    <% @organization.events.each do |event| %>
-      <li><%= link_to event.name, organization_event_path(@organization, event) %>
-      </li>
+    <% if @organization.city != "" && @organization.state != "" %>
+      <span><%= @organization.city %>, <%= @organization.state %></span><br/>
+    <% end %>
+
+    <% if @organization.contact_email != ""  %>
+      <span><%= @organization.contact_email %></span><br/>
+    <% end %>
+
+    <% if @organization.contact_email != "" %>
+      <span><%= @organization.website %></span><br/>
+    <% end %>
+
+    <% if @organization.facebook != "" %>
+      <span><%= @organization.facebook %></span><br/>
+    <% end %>
+
+    <% if @organization.twitter_handle != "" %>
+      <span><%= @organization.twitter_handle %></span><br/>
+    <% end %>
+
+    <% if @organization.youtube != ""  %>
+      <span><%= @organization.youtube %></span><br/>
+    <% end %>
+
+  </ul>
+
+  <% if current_user.id == @organization.user_id %>
+
+  <div class="manage_links">
+      <%= link_to("Edit Profile  ", edit_organization_path(@organization)) %> |
+
+      <%= link_to("  Delete Organization", organization_path(@organization), :method => :delete, :confirm => "Are you sure you want to delete #{@organization.name}?")%>
+  </div>
+
+  <div class="add_event_link">
+    <%= link_to "Add Event", new_organization_event_path(@organization), :class => "add-event" %>
+  </div>
+  <% end %>
+
+</div>
+
+<div class="events span8">
+    <% if @organization.events.count > 0 %>
+      <div class="row-fluid">
+        <% @organization.events[0..2].each do |event| %>
+          <div class="event span4">
+                <h2 class="event-date-box-large"><%= event.scheduled_on.strftime("%m-%d") %></h2><br/>
+            <%= link_to event.name, organization_event_path(@organization, event) %><br/>
+             <%= link_to "view details", organization_event_path(@organization, event), :class => "capitalized" %>
+          </div>
+        <% end %>
+      <% if @organization.events.count > 3 %>
+        </div>
+        <br/>
+      <div class="row-fluid">
+        <% @organization.events[3..5].each do |event| %>
+          <div class="event span4">
+                <h2 class="event-date-box-large"><%= event.scheduled_on.strftime("%m-%d") %></h2><br/>
+            <%= link_to event.name, organization_event_path(@organization, event) %><br/>
+             <%= link_to "view details", organization_event_path(@organization, event), :class => "capitalized" %>
+          </div>
+        <% end %>
+      </div>
+       <% end %>
+    <% else %>
+      <p> You currently have no upcoming events, please create one <%= link_to " here.", new_organization_event_path(@organization), :class => "current-user" %><p>
     <% end %>
   </ul>
 </div>
 
-<% if current_user.id == @organization.user_id %>
-    <%= link_to("Edit Profile", edit_organization_path(@organization)) %>
-    <%= link_to("Delete Organization", organization_path(@organization), :method => :delete, :confirm => "Are you sure you want to delete #{@organization.name}?")%>
-<% end %>
 

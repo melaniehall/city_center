@@ -1,24 +1,40 @@
+<div class="event-form row-fluid">
+
+
+<div class="span3">
+  <h2>Edit Event </h3>
+</div>
+
+<div class="span4">
 <%= form_for [@organization, @event] do |f| %>
 
-  <div><%= f.label :name %><br />
+  <div><%= f.label :name %>
   <%= f.text_field :name, :autofocus => true %></div>
 
-  <div><%= f.label :description %><br />
-  <%= f.text_area :description %></div>
+  <div><%= f.label :description %>
+  <%= f.text_area :description, :cols => 10, :rows => 10 %></div>
+</div>
 
-  <div><%= f.label :scheduled_on %><br />
-  <%= f.text_area :scheduled_on %></div>
+<div class="span5">
+  <%= f.label :venue %>
+  <%= f.text_field :venue %>
 
-  <div><%= f.label :venue %><br />
-  <%= f.text_area :venue %></div>
+  <%= f.label :scheduled_on %>
+  <%= f.text_field :scheduled_on %>
 
-  <div><%= f.label :starts_at %><br />
-  <%= f.text_area :starts_at %></div>
+  <%= f.label :starts_at %>
+  <%= f.text_field :starts_at %>
 
-  <div><%= f.label :ends_at %><br />
-  <%= f.text_area :ends_at %></div>
+  <%= f.label :ends_at %>
+  <%= f.text_field :ends_at %>
 
-  <div><%= f.submit "Update Event" %></div>
+  <%= f.label :organizer %>
+  <%= f.text_field :organizer %>
+
+  <%= f.label :contact_email %>
+  <%= f.text_field :contact_email %>
+
+  <%= f.submit "Update Event", :class => "form-submit-btn" %>
 <% end %>
 
-<%= link_to "Back", :back %>
+</div>

@@ -55,6 +55,7 @@ class OrganizationsController < ApplicationController
     @organization.events.each do |event|
       event.delete
     end
+
     @organization.delete
     flash[:notice] = "Your organization has been deleted."
     redirect_to root_path

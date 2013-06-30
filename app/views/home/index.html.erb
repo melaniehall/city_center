@@ -1,6 +1,7 @@
 <% unless current_user %>
   <header class="intro">
-    <h1> We're better together.</h1>
+    <h1> We're better together.</h1><br/>
+    <p>Connect to a network of organizations and people passionate about changing their community for the better.</p>
     <button>
       <%= link_to('Sign In', new_user_session_path, :id => "sign_in_link")%>
     </button>
@@ -11,27 +12,93 @@
 <% end %>
 
 <% if current_user %>
-  <%= image_tag current_user.avatar_url(:event) if current_user.avatar? %>
-  <%= link_to "Edit User Info", edit_user_registration_path %>
-  <%= link_to "Add Organization", new_organization_path %>
-  <h3>My Organizations:</h3>
-  <% current_user.organizations.each do |organization| %>
-    <div><%= link_to organization.name, organization %></div>
+  <div class="user-dashboard row-fluid">
+    <div class="user-panel span3">
+
+      <%= image_tag current_user.avatar_url(:thumb), :class => 'user-thumb' if current_user.avatar? %>
+
+      <div class="main-user-info">
+        <h4 class="user-name">
+          <%= current_user.name %>
+        </h4>
+        <p>
+          <%= current_user.email%>
+        </p>
+      </div>
+
+      <div class="secondary-user-info">
+        <% if current_user.bio && current_user.bio != ""%>
+          <p class="bio">
+            <%= current_user.bio%>
+          </p>
+        <% end %>
+        <ul>
+          <% if current_user.facebook && current_user.facebook != "" %>
+            <li>
+              <%= current_user.facebook %>
+            </li>
+          <% end %>
+          <% if current_user.twitter_handle && current_user.twitter_handle != "" %>
+            <li>
+              <%= current_user.twitter_handle %>
+            </li>
+          <% end %>
+          <% if current_user.website && current_user.website != "" %>
+            <li>
+              <%= current_user.website %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div id="edit-user-info" class="capitalized">
+        <%= link_to "Edit User Info", edit_user_registration_path %>
+      </div>
+
+     </div>
+
+      <div class="info-panel span6 organization">
+        <h3>My Organizations</h3>
+        <%= link_to "+ Add Organization", new_organization_path, :class => "add_organization" %>
+        <% current_user.organizations.each do |organization| %></p>
+          <div class="span4">
+            <%= link_to organization do %>
+                <%= image_tag organization.avatar_url(:event), :class => "organization-image" %>
+            <% end %>
+            <h4 class="title">
+              <%= organization.name %>
+            </h4><br/>
+          </div>
+
+            <%#= link_to "Add Event", new_organization_event_path(organization), :class => "add-event" %>
+        <% end %>
+    </div>
+
+
+    <div class="info-panel span3 attendances">
+      <h3>Events I'm Attending</h3>
+      <p class="capitalized"><%= link_to "view full calendar", events_path, :class => "align-right" %> </p>
+
       <ul>
-      <% organization.events.each do |event| %>
-          <li><%= link_to event.name, organization_event_path(organization, event) %></li>
-      <% end %>
-      </ul>
-      <%= link_to "Add Event", new_organization_event_path(organization) %>
-  <% end %>
+         <% current_user.events.each do |event| %>
+            <li>
+              <span class="event-date-box">
+                <%= event.scheduled_on.strftime("%m-%d") %>
+              </span>
+              <%= link_to event.name, organization_event_path(event.parent_organization, event) %>
+            </li>
+          <% end %>
+    </div>
+
+</div>
 
 
 <% else %>
+
   <div class="community-intro">
-    <h2>Our Community</h2>
-    <p> We have the most creative, most innovative nonprofits and social entreprenuers. Here's a glimpse: </p>
+    <h2>Our Community</h2><br/>
     <div class="organizations-intro row-fluid">
-      <% Organization.all.each do | org | %>
+      <% Organization.all[0..3].each do | org | %>
         <div class="organization-intro span3"> <%= image_tag org.avatar_url(:event) %> </div>
       <% end %>
     </div>

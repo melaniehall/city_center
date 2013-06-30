@@ -1,28 +1,43 @@
-<h4><%= @event.name %></h4>
-<p> Host: <%= link_to @organization.name, organization_path(@organization)%></p>
-<p><%= @event.venue %></p>
-<p><%= @event.description %></p>
-<p><%= @event.scheduled_on.strftime("%m-%d-%Y") %></p>
-<p><%= @event.starts_at.strftime("%I:%M%p") %>
-  <% if @event.ends_at %>
-    <%= @event.ends_at.strftime("to %I:%M%p") %>
-  <% end %>
- </p>
+<div class="event-detail row-fluid">
+  <div class="span12 event-card">
+   <h3> <%= @event.name %></h3><span class="capitalized"> Hosted by:  <%= link_to @organization.name, organization_path(@organization)%></span></p>
+    <p class="event-info">Date: <%= @event.scheduled_on.strftime("%m-%d-%Y")%>  |  Location: <%= @event.venue %>  |  Time: <%= @event.starts_at.strftime("%I:%M%p") %> <% if @event.ends_at %>
+        <%= @event.ends_at.strftime("to %I:%M%p") %>
+      <% end %></p>
 
-<h4>Attendees</h4>
-  <ul>
-    <% @attendees.each do |attendee| %>
-      <li><%= image_tag attendee.user.avatar_url(:thumb) %></li>
+
+    <p class="description"><%= @event.description if @event.description != ""%></p>
+<!--
+    <p><%= @event.starts_at.strftime("%I:%M%p") %>
+      <% if @event.ends_at %>
+        <%= @event.ends_at.strftime("to %I:%M%p") %>
+      <% end %>
+     </p> -->
+
+    <div class="event-attendees">
+        <h4>Attendees:</h4>
+          <ul>
+            <% @attendees.each do |attendee| %>
+              <li><%= image_tag attendee.user.avatar_url(:thumb) %></li>
+            <% end %>
+          </ul>
+    </div>
+
+<div class="row-fluid footer">
+    <div class="manage_event_links span6">
+      <%  if current_user.id == @organization.user_id %>
+        <%= link_to("Edit Event |  ", edit_organization_event_path(@organization, @event)) %>
+        <%= link_to("Delete Event", organization_event_path(@organization, @event), :method => :delete, :confirm => "Are you sure you want to delete #{@event.name}?")%>
+      <% end %>
+    </div>
+
+    <div class="manage_event_links span4 offset2">
+    <% if current_user.is_attending?(@event) %>
+      <%= link_to("Leave Event", attendee_path(@event), :method => :delete, :id => "attend_btn")%>
+    <% else %>
+      <%= link_to("Attend Event", attendees_path(@event), :params => { :event_id => @event.id, :user_id => current_user.id }, :method => :create, :id => "attend_btn") %>
     <% end %>
-  </ul>
+  </div>
 
-<%  if current_user.id == @organization.user_id %>
-  <%= link_to("Edit Event Details", edit_organization_event_path(@organization, @event)) %>
-  <%= link_to("Delete Event", organization_event_path(@organization, @event), :method => :delete, :confirm => "Are you sure you want to delete #{@event.name}?")%>
-<% end %>
-
-<% if current_user.is_attending?(@event) %>
-  <%= link_to("Leave Event", attendee_path(@event), :method => :delete)%>
-<% else %>
-  <%= link_to("Attend Event", attendees_path(@event), :method => :create)%>
-<% end %>
+  </div>
+</div>

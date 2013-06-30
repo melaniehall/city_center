@@ -2,7 +2,7 @@ class AttendeesController < ApplicationController
   before_filter :authenticate_user!
 
   def create
-    @event = Event.where(params[:event]).first
+    @event = Event.find(params[:format])
     @attendee = Attendee.create(:event_id => @event.id, :user_id => current_user.id)
     @organization = Organization.where(:id => @event.organization_id).first
 
@@ -21,7 +21,7 @@ class AttendeesController < ApplicationController
   end
 
   def destroy
-    @event = Event.where(params[:event]).first
+    @event = Event.where(params[:format]).first
     @organization = Organization.where(:id => @event.organization_id).first
 
     if authentic_attendee
@@ -37,6 +37,7 @@ class AttendeesController < ApplicationController
 
 
   def authentic_attendee
+    @event = Event.find(params[:id])
     Attendee.where(:user_id => current_user.id, :event_id => @event.id).first
   end
 end

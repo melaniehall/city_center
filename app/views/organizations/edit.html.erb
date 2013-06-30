@@ -1,19 +1,49 @@
+<div class="organization-form row-fluid">
+
+<div class="span3">
+  <h2> Edit Organization </h2>
+</div>
+
+<div class="span4">
 <%= form_for(@organization) do |f| %>
 
-  <div><%= f.label :name %><br />
+  <div><%= f.label :name %>
   <%= f.text_field :name, :autofocus => true %></div>
 
   <p>
     <%= image_tag @organization.avatar_url(:thumb) if @organization.avatar? %>
-    <label>My Avatar</label>
+    <label>Profile Picture</label>
     <%= f.file_field :avatar %>
     <%= f.hidden_field :avatar_cache %>
   </p>
 
-  <div><%= f.label :bio %><br />
-  <%= f.text_area :bio %></div>
+  <%= f.label :bio %>
+  <%= f.text_area :bio, :cols => 10, :rows => 10 %>
+</div>
 
-  <div><%= f.submit "Edit Profile" %></div>
-<% end %>
+  <div class="span5">
+    <%= f.label :city %>
+    <%= f.text_field :city %>
 
-<%= link_to "Back", :back %>
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+
+    <%= f.label :contact_email %>
+    <%= f.text_field :contact_email %>
+
+    <%= f.label :website %>
+    <%= f.text_field :website %>
+
+    <%= f.label :facebook %>
+    <%= f.text_field :facebook %>
+
+    <%= f.label :twitter_handle %>
+    <%= f.text_field :twitter_handle%>
+
+    <%= f.label :youtube %>
+    <%= f.text_field :youtube %>
+
+    <div><%= f.submit "Edit Profile", :class => "form-submit-btn" %></div>
+  <% end %>
+  </div>
+</div>

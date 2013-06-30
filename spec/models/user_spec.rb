@@ -12,7 +12,8 @@ describe User,"#is_attending?(event)" do
       expect(subject).to be_true
     end
   end
-  context 'user is currently attending the event' do
+
+  context 'user is not currently attending the event' do
     let!(:user) { FactoryGirl.create(:user) }
     let!(:non_attending_user) { FactoryGirl.create(:user, :email => "user2@example.com") }
     subject { non_attending_user.is_attending?(event) }
